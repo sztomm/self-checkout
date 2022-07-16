@@ -1,7 +1,14 @@
 using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SelfCheckout.API.Extensions;
+using SelfCheckout.API.Middlewares;
+using SelfCheckout.DAL;
 using Serilog;
+using System;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +21,19 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddDbContext<SelfCheckoutDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("SelfCheckoutDb")));
+
 var app = builder.Build();
+
+var logger = app.Services.GetRequiredService<ILogger>();
+logger.Information($"");
+logger.Information($"API Starting... Environment is set to: '{app.Environment.EnvironmentName}'; API version: {Assembly.GetEntryAssembly().GetName().Version}");
+logger.Information($"");
+
+using var scope = app.Services.CreateScope();
+var dbContext = scope.ServiceProvider.GetRequiredService<SelfCheckoutDbContext>();
+if (dbContext == null) throw new ArgumentException("Db context is null!", nameof(dbContext));
+dbContext.MigrateDb(logger);
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -22,6 +41,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseHttpsRedirection();
 
