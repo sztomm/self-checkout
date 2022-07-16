@@ -49,9 +49,9 @@ namespace SelfCheckout.UnitTests.API.Services
         [TestMethod]
         [DataRow(new string[] { "5", "1000" }, true)]
         [DataRow(new string[] { "5", "1000", "100000" }, false)]
-        public async Task TestValidation(string[] moneyValues, bool isValidExpected)
+        public async Task TestValidation(string[] moneys, bool isValidExpected)
         {
-            (bool isValid, _) = await StockService.Validate(moneyValues);
+            (bool isValid, _) = await StockService.ValidateMoney(moneys);
             Assert.AreEqual(isValidExpected, isValid, $"Expected {isValidExpected}, got {isValid}");
         }
 
@@ -60,11 +60,11 @@ namespace SelfCheckout.UnitTests.API.Services
         [DataRow("500", 1, false)]
         [DataRow("1000", 10, false)]
         [DataRow("1000", -10, true)]
-        public async Task FillMoneyTest(string moneyValue, int amount, bool throwsException)
+        public async Task FillMoneyTest(string moneys, int amount, bool throwsException)
         {
             var insetMoneys = new Dictionary<string, int>()
             {
-                { moneyValue, amount }
+                { moneys, amount }
             };
 
             if (throwsException)
@@ -74,7 +74,7 @@ namespace SelfCheckout.UnitTests.API.Services
             else
             {
                 await StockService.FillMoney(insetMoneys);
-                var moneyType = DbContext.Moneys.Include(m => m.Stock).Single(m => m.Value.ToString() == moneyValue);
+                var moneyType = DbContext.Moneys.Include(m => m.Stock).Single(m => m.Value.ToString() == moneys);
                 Assert.AreEqual(amount, moneyType.Stock.Count, $"Expected {amount}, got {moneyType.Stock.Count}");
             }
         }

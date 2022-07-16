@@ -4,6 +4,17 @@
         <name>SelfCheckout.API</name>
     </assembly>
     <members>
+        <member name="T:SelfCheckout.API.Controllers.V1.CheckoutController">
+            <summary>
+            Endpoints that handle checkouts
+            </summary>
+        </member>
+        <member name="M:SelfCheckout.API.Controllers.V1.CheckoutController.HandleCheckout(SelfCheckout.API.ViewModels.CheckoutVM)">
+            <summary>
+            Handle inserted moneys and money back
+            </summary>
+            <returns>Returns each money type with the amount of it for money back, otherwise return 404 NotFound or 500 Internal Server Error</returns>
+        </member>
         <member name="T:SelfCheckout.API.Controllers.V1.StockController">
             <summary>
             Endpoints that handle stocks
@@ -15,7 +26,7 @@
             </summary>
             <returns>Returns each money type with the amount of it from the database, otherwise return 404 NotFound or 500 Internal Server Error</returns>
         </member>
-        <member name="M:SelfCheckout.API.Controllers.V1.StockController.AddMoney(System.Collections.Generic.IDictionary{System.String,System.Int32})">
+        <member name="M:SelfCheckout.API.Controllers.V1.StockController.HandleMoneys(System.Collections.Generic.IDictionary{System.String,System.Int32})">
             <summary>
             Validates the inserted money and fills the stocked money with the inserted ones in the database
             </summary>

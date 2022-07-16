@@ -46,6 +46,7 @@ builder.Services.AddDbContext<SelfCheckoutDbContext>(options => options.UseSqlSe
 
 // Register services
 builder.Services.AddScoped<IStockService, StockService>();
+builder.Services.AddScoped<ICheckoutService, CheckoutService>();
 
 var app = builder.Build();
 

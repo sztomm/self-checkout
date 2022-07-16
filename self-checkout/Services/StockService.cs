@@ -31,7 +31,7 @@ namespace SelfCheckout.API.Services
             return stocks;
         }
 
-        public async Task<(bool, string)> Validate(ICollection<string> insertedMoneyTypes)
+        public async Task<(bool, string)> ValidateMoney(ICollection<string> insertedMoneyTypes)
         {
             Logger.LogDebug($"Validating inserted money types");
 

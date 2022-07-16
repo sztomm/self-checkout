@@ -56,19 +56,19 @@ namespace SelfCheckout.API.Controllers.V1
         /// <returns>Returns each money type with the amount of it from the database, otherwise return 404 NotFound or 500 Internal Server Error</returns>
         [HttpPost]
         [MapToApiVersion("1.0")]
-        public async Task<ActionResult<IDictionary<string, int>>> AddMoney([FromBody] IDictionary<string ,int> insertedMoneys)
+        public async Task<ActionResult<IDictionary<string, int>>> HandleMoneys([FromBody] IDictionary<string ,int> handleMoneys)
         {
             try
             {
                 Logger.LogInformation($"Filling stocked moneys");   //TODO: use serilog request logger instead
 
-                (var isValid, var message) = await StockService.Validate(insertedMoneys.Keys);
+                (var isValid, var message) = await StockService.ValidateMoney(handleMoneys.Keys);
                 if (!isValid)
                 {
                     return BadRequest(message);
                 }
 
-                await StockService.FillMoney(insertedMoneys);
+                await StockService.FillMoney(handleMoneys);
                 var stockedMoneys = await StockService.GetStocks();
 
                 Logger.LogDebug($"Mapping stocked moneys to the response object");
