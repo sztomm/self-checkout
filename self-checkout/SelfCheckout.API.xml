@@ -15,6 +15,12 @@
             </summary>
             <returns>Returns each money type with the amount of it from the database, otherwise return 404 NotFound or 500 Internal Server Error</returns>
         </member>
+        <member name="M:SelfCheckout.API.Controllers.V1.StockController.AddMoney(System.Collections.Generic.IDictionary{System.String,System.Int32})">
+            <summary>
+            Validates the inserted money and fills the stocked money with the inserted ones in the database
+            </summary>
+            <returns>Returns each money type with the amount of it from the database, otherwise return 404 NotFound or 500 Internal Server Error</returns>
+        </member>
         <!-- Badly formed XML comment ignored for member "T:self_checkout.Controllers.HealthCheckController" -->
     </members>
 </doc>
