@@ -1,4 +1,11 @@
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Serilog;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Host.UseSerilog((hostContextBuilder, loggerConfiguration) => loggerConfiguration.ReadFrom.Configuration(builder.Configuration, sectionName: "Serilog"));
 
 // Add services to the container.
 
