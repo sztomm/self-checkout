@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32228.430
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelfCheckout.API", "self-checkout\SelfCheckout.API.csproj", "{5DE70CED-B5F3-4BF7-871B-775E592ACE2A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SelfCheckout.DAL", "SelfCheckout.DAL\SelfCheckout.DAL.csproj", "{2A4DF235-286D-4766-9184-E56AFD22575A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelfCheckout.DAL", "SelfCheckout.DAL\SelfCheckout.DAL.csproj", "{2A4DF235-286D-4766-9184-E56AFD22575A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SelfCheckout.Abstraction", "SelfCheckout.Abstraction\SelfCheckout.Abstraction.csproj", "{FA905F7E-E0FE-4B0E-82A9-C792C69C4183}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelfCheckout.Abstraction", "SelfCheckout.Abstraction\SelfCheckout.Abstraction.csproj", "{FA905F7E-E0FE-4B0E-82A9-C792C69C4183}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SelfCheckout.UnitTests", "SelfCheckout.UnitTests\SelfCheckout.UnitTests.csproj", "{33FAD817-9E29-4CB8-9A41-0631D3839766}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelfCheckout.UnitTests", "SelfCheckout.UnitTests\SelfCheckout.UnitTests.csproj", "{33FAD817-9E29-4CB8-9A41-0631D3839766}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SelfCheckout.API", "SelfCheckout.API\SelfCheckout.API.csproj", "{2C810F1A-F0B5-4CC8-9F0B-B0FAC6FD5997}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5DE70CED-B5F3-4BF7-871B-775E592ACE2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5DE70CED-B5F3-4BF7-871B-775E592ACE2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5DE70CED-B5F3-4BF7-871B-775E592ACE2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5DE70CED-B5F3-4BF7-871B-775E592ACE2A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2A4DF235-286D-4766-9184-E56AFD22575A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2A4DF235-286D-4766-9184-E56AFD22575A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A4DF235-286D-4766-9184-E56AFD22575A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +29,10 @@ Global
 		{33FAD817-9E29-4CB8-9A41-0631D3839766}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33FAD817-9E29-4CB8-9A41-0631D3839766}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33FAD817-9E29-4CB8-9A41-0631D3839766}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C810F1A-F0B5-4CC8-9F0B-B0FAC6FD5997}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C810F1A-F0B5-4CC8-9F0B-B0FAC6FD5997}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C810F1A-F0B5-4CC8-9F0B-B0FAC6FD5997}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C810F1A-F0B5-4CC8-9F0B-B0FAC6FD5997}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

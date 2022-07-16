@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\self-checkout\SelfCheckout.API.csproj" />
+    <ProjectReference Include="..\SelfCheckout.API\SelfCheckout.API.csproj" />
     <ProjectReference Include="..\SelfCheckout.DAL\SelfCheckout.DAL.csproj" />
   </ItemGroup>
 

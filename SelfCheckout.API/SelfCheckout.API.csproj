@@ -5,7 +5,7 @@
     <Version>0.0.1</Version>
     <Authors>sztamas</Authors>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
-    <DocumentationFile>..\self-checkout\SelfCheckout.API.xml</DocumentationFile>
+    <DocumentationFile>..\SelfCheckout.API\SelfCheckout.API.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
