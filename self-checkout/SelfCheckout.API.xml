@@ -4,10 +4,17 @@
         <name>SelfCheckout.API</name>
     </assembly>
     <members>
-        <member name="T:self_checkout.Controllers.HealthCheckController">
+        <member name="T:SelfCheckout.API.Controllers.V1.StockController">
             <summary>
             Endpoints that handle stocks
             </summary>
         </member>
+        <member name="M:SelfCheckout.API.Controllers.V1.StockController.GetStock">
+            <summary>
+            Get all stocked moneys from the database
+            </summary>
+            <returns>Returns each money type with the amount of it from the database, otherwise return 404 NotFound or 500 Internal Server Error</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:self_checkout.Controllers.HealthCheckController" -->
     </members>
 </doc>

@@ -3,11 +3,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using SelfCheckout.API.Configurations;
 using SelfCheckout.API.Extensions;
+using SelfCheckout.API.Interfaces;
 using SelfCheckout.API.Middlewares;
+using SelfCheckout.API.Services;
 using SelfCheckout.DAL;
 using Serilog;
 using System;
@@ -44,7 +45,7 @@ builder.Services.Configure<MoneysConfiguration>(builder.Configuration.GetSection
 builder.Services.AddDbContext<SelfCheckoutDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("SelfCheckoutDb")));
 
 // Register services
-
+builder.Services.AddScoped<IStockService, StockService>();
 
 var app = builder.Build();
 
