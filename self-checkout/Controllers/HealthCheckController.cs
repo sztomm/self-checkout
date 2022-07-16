@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace self_checkout.Controllers
 {
+    /// <summary>
+    /// Endpoints to check if the application is up&running
+    /// </summary>
     [ApiController]
     [Route("[controller]")]
     public class HealthCheckController : ControllerBase

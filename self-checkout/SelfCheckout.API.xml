@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SelfCheckout.API</name>
+    </assembly>
+    <members>
+        <member name="T:self_checkout.Controllers.HealthCheckController">
+            <summary>
+            Endpoints that handle stocks
+            </summary>
+        </member>
+    </members>
+</doc>
