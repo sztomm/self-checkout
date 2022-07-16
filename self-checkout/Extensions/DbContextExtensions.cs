@@ -1,4 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using SelfCheckout.API.Configurations;
+using SelfCheckout.DAL.Models;
 using Serilog;
 using System;
 using System.Linq;
@@ -25,6 +28,31 @@ namespace SelfCheckout.API.Extensions
             {
                 logger.Error(ex, $"Automatic migration failed on database");
             }
+        }
+
+        public static void SeedData(this DbContext dbContext, ILogger logger, IOptions<MoneysConfiguration> options)
+        {
+            var moneysConfig = options?.Value;
+            if (moneysConfig == null)
+            {
+                logger.Error($"Cannot found any money configuration to be able to seed");
+                return;
+            }
+
+            var storedMoneys = dbContext.Set<Money>().ToList();
+            foreach (var money in moneysConfig.AcceptedMoneys)
+            {
+                if (!storedMoneys.Any(sm => sm.Type == money.Type && sm.Value == money.Value))
+                {
+                    dbContext.Set<Money>().Add(new() { Type = money.Type, Value = money.Value });
+                }
+                else {
+                    logger.Verbose($"Money with {nameof(money.Type)} '{money.Type}' and {nameof(money.Value)} {money.Value} is already loaded to the database");
+                }
+            }
+
+            dbContext.SaveChanges();
+            logger.Information($"Successfully filled money table with the possible bills and coins");
         }
     }
 }
